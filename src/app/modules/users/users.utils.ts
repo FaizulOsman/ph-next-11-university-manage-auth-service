@@ -1,5 +1,6 @@
 import { User } from './users.model'
 
+// Find last UserId
 export const findLastUserId = async () => {
   const lastUser = await User.findOne({}, { id: 1, _id: 0 })
     .sort({
@@ -10,6 +11,7 @@ export const findLastUserId = async () => {
   return lastUser?.id
 }
 
+// Generate new UserId
 export const generateUserId = async () => {
   const currentId = (await findLastUserId()) || (0).toString().padStart(5, '0')
   //   increment by 1
