@@ -1,0 +1,36 @@
+{
+  message: '🔥 Database connected 🔥',
+  level: 'info',
+  label: 'PH',
+  timestamp: '2023-06-04T17:08:16.746Z'
+}
+{
+  message: 'The app is running on port: 5000',
+  level: 'info',
+  label: 'PH',
+  timestamp: '2023-06-04T17:08:16.775Z'
+}
+{
+  message: '🔥 Database connected 🔥',
+  level: 'info',
+  label: 'PH',
+  timestamp: '2023-06-04T17:13:54.309Z'
+}
+{
+  message: 'The app is running on port: 5000',
+  level: 'info',
+  label: 'PH',
+  timestamp: '2023-06-04T17:13:54.323Z'
+}
+{
+  message: '🔥 Database connected 🔥',
+  level: 'info',
+  label: 'PH',
+  timestamp: '2023-06-04T17:14:33.788Z'
+}
+{
+  message: 'The app is running on port: 5000',
+  level: 'info',
+  label: 'PH',
+  timestamp: '2023-06-04T17:14:33.806Z'
+}
