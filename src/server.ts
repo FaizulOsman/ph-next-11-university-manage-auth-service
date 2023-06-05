@@ -4,6 +4,11 @@ import config from './config/index'
 import { logger, errorLogger } from './shared/logger'
 import { Server } from 'http'
 
+process.on('uncaughtException', err => {
+  console.log('Uncaught exception is detected', err)
+  process.exit(1)
+})
+
 async function bootstrap() {
   let server: Server
   try {
