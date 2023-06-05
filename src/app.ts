@@ -13,9 +13,9 @@ app.use(express.urlencoded({ extended: true }))
 // Application Routes
 app.use('/api/v1/users/', UserRoutes)
 
-// app.get('/', (req: Request, res: Response, next: NextFunction) => {
-//   // throw new ApiError(400, 'Orre Baba Error')
-//   // next('Orre Baba Error')
+// // Testing
+// app.get('/', async (req: Request, res: Response, next: NextFunction) => {
+//   Promise.reject(new Error('Unhandled Promise Rejected!'))
 // })
 
 // Global Error Handler
