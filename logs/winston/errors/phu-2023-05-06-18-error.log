@@ -1,0 +1,4 @@
+Mon Jun 05 2023 18:28:18 [PH] error: Testing error logger
+Mon Jun 05 2023 18:31:19 [PH] error: Failed to connect database  querySrv ECONNREFUSED _mongodb._tcp.cluster0.mzkazhr.mongodb.net
+Mon Jun 05 2023 18:31:34 [PH] error: Failed to connect database  querySrv ECONNREFUSED _mongodb._tcp.cluster0.mzkazhr.mongodb.net
+Mon Jun 05 2023 18:31:49 [PH] error: Failed to connect database  querySrv ECONNREFUSED _mongodb._tcp.cluster0.mzkazhr.mongodb.net
