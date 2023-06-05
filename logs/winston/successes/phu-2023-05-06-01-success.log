@@ -1,0 +1,12 @@
+{
+  message: '🔥 Database connected 🔥',
+  level: 'info',
+  label: 'PH',
+  timestamp: '2023-06-04T19:28:01.591Z'
+}
+{
+  message: 'The app is running on port: 5000',
+  level: 'info',
+  label: 'PH',
+  timestamp: '2023-06-04T19:28:01.657Z'
+}
