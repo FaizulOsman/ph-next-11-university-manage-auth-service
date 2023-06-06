@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-// ZOD Error Setup
+// Define the Zod schema for creating a user
 const createUserZodSchema = z.object({
   body: z.object({
     role: z.string({
