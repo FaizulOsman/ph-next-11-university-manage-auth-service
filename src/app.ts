@@ -6,7 +6,7 @@ const app: Application = express()
 
 app.use(cors())
 
-// middleware
+// middleware/parser
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 

@@ -13,6 +13,7 @@ const myFormat = printf(({ level, message, label, timestamp }) => {
   return `${date.toDateString()} ${hour}:${minutes}:${seconds} [${label}] ${level}: ${message}`
 })
 
+// Create a logger for general information logs
 const logger = createLogger({
   level: 'info',
   format: combine(label({ label: 'PH' }), timestamp(), myFormat),
@@ -25,7 +26,7 @@ const logger = createLogger({
         'winston',
         'successes',
         'phu-%DATE%-success.log'
-      ),
+      ), // Specify the file path for success logs
       datePattern: 'YYYY-DD-MM-HH',
       zippedArchive: true,
       maxSize: '20m',
@@ -34,6 +35,7 @@ const logger = createLogger({
   ],
 })
 
+// Create a logger specifically for error logs
 const errorLogger = createLogger({
   level: 'error',
   format: combine(label({ label: 'PH' }), timestamp(), myFormat),
@@ -46,7 +48,7 @@ const errorLogger = createLogger({
         'winston',
         'errors',
         'phu-%DATE%-error.log'
-      ),
+      ), // Specify the file path for success logs
       datePattern: 'YYYY-DD-MM-HH',
       zippedArchive: true,
       maxSize: '20m',
