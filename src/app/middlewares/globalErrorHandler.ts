@@ -7,26 +7,32 @@ import config from '../../config'
 import ApiError from '../../errors/ApiError'
 import { errorLogger } from '../../shared/logger'
 
+// Global error handler middleware
 const globalErrorHandler: ErrorRequestHandler = (
-  error,
-  req: Request,
-  res: Response,
-  next: NextFunction
+  error, // Error object representing a validation error
+  req: Request, // Express request object
+  res: Response, // Express response object
+  next: NextFunction // Express next function
 ) => {
+  // Log errors in production environment otherwise log in console
   config.env === 'development'
     ? console.log('🔥 GlobalErrorHandler => ', error)
     : errorLogger.error('🔥 GlobalErrorHandler => ', error)
 
-  let statusCode = 500
-  let message = 'Something went wrong!'
-  let errorMessage: IGenericErrorMessage[] = []
+  let statusCode = 500 // Default status code for internal server errors
+  let message = 'Something went wrong!' // Default error message
+  let errorMessage: IGenericErrorMessage[] = [] // Array to store detailed error messages
 
+  // Check if the error is a validation error
   if (error?.name === 'ValidatorError') {
+    // Handle the validation error
     const simplifiedError = handleValidationError(error)
     statusCode = simplifiedError.statusCode
     message = simplifiedError.message
     errorMessage = simplifiedError.errorMessage
-  } else if (error instanceof ApiError) {
+  }
+  // Check if the error is an instance of the custom ApiError class
+  else if (error instanceof ApiError) {
     statusCode = error?.statusCode
     message = error?.message
     errorMessage = error?.message
@@ -37,7 +43,9 @@ const globalErrorHandler: ErrorRequestHandler = (
           },
         ]
       : []
-  } else if (error instanceof Error) {
+  }
+  // Check if the error is a generic Error object
+  else if (error instanceof Error) {
     message = error?.message
     errorMessage = error?.message
       ? [
@@ -49,13 +57,14 @@ const globalErrorHandler: ErrorRequestHandler = (
       : []
   }
 
+  // Send the error response
   res.status(statusCode).json({
     success: false,
     message,
     errorMessage,
     stack: config.env !== 'production' ? error?.stack : undefined,
   })
-  next()
+  next() // Call the next middleware function
 }
 
 export default globalErrorHandler
