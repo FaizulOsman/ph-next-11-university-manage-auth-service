@@ -9,7 +9,7 @@ import {
   academicSemesterTitles,
 } from './academicSemester.constant';
 import ApiError from '../../../errors/ApiError';
-import status from 'http-status';
+import httpStatus from 'http-status';
 
 // Academic Semester Schema
 export const academicSemesterSchema = new Schema<IAcademicSemester>(
@@ -41,7 +41,10 @@ academicSemesterSchema.pre('save', async function (next) {
     year: this.year,
   });
   if (isExist) {
-    throw new ApiError(status.CONFLICT, 'Academic semester is already exist!');
+    throw new ApiError(
+      httpStatus.CONFLICT,
+      'Academic semester is already exist!'
+    );
   }
   next(); // mongoose hook next(), not express next()
 });
