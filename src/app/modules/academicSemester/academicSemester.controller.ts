@@ -23,10 +23,12 @@ const createSemester = catchAsync(async (req: Request, res: Response) => {
   // next();
 });
 
+// Get All Semesters
 const getAllSemesters = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const filters = pick(req.query, academicSemesterFilterableFields);
-    const paginationOptions = pick(req.query, paginationFields);
+
+    const paginationOptions = pick(req.query, paginationFields); // pagination
 
     const result = await AcademicSemesterService.getAllSemesters(
       filters,
