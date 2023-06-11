@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-expressions */
-import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
+import { ErrorRequestHandler, Request, Response } from 'express';
 import { IGenericErrorMessage } from '../../interfaces/error';
 import handleValidationError from '../../errors/handleValidationError';
 import config from '../../config';
@@ -14,8 +14,7 @@ import handleCastError from '../../errors/handleCastError';
 const globalErrorHandler: ErrorRequestHandler = (
   error, // Error object representing a validation error
   req: Request, // Express request object
-  res: Response, // Express response object
-  next: NextFunction // Express next function
+  res: Response // Express response object
 ) => {
   // Log errors in production environment otherwise log in console
   config.env === 'development'
@@ -81,7 +80,6 @@ const globalErrorHandler: ErrorRequestHandler = (
     errorMessage,
     stack: config.env !== 'production' ? error?.stack : undefined,
   });
-  next(); // Call the next middleware function
 };
 
 export default globalErrorHandler;
