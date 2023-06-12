@@ -30,6 +30,10 @@ export const academicSemesterSchema = new Schema<IAcademicSemester>(
   },
   {
     timestamps: true, // It will add createdAt & updatedAt fields
+    toJSON: {
+      // If we use it, we will get _id as id
+      virtuals: true,
+    },
   }
 );
 

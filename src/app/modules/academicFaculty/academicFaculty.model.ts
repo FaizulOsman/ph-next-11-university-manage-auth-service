@@ -18,6 +18,7 @@ const AcademicFacultySchema = new Schema<
   {
     timestamps: true,
     toJSON: {
+      // If we use it, we will get _id as id
       virtuals: true,
     },
   }
