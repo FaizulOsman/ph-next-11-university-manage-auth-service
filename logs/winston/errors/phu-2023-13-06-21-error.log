@@ -1,0 +1,4 @@
+Tue Jun 13 2023 21:7:4 [PH] error: Failed to connect database  querySrv ENODATA _mongodb._tcp.cluster0.mzkazhr.mongodb.net
+Tue Jun 13 2023 21:7:38 [PH] error: Failed to connect database  querySrv ECONNREFUSED _mongodb._tcp.cluster0.mzkazhr.mongodb.net
+Tue Jun 13 2023 21:9:6 [PH] error: Failed to connect database  querySrv ENODATA _mongodb._tcp.cluster0.mzkazhr.mongodb.net
+Tue Jun 13 2023 21:12:15 [PH] error: Failed to connect database  querySrv ENODATA _mongodb._tcp.cluster0.mzkazhr.mongodb.net
