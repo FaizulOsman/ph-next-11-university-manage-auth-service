@@ -1,0 +1,2 @@
+Thu Jun 15 2023 19:49:52 [PH] error: Failed to connect database  querySrv ENODATA _mongodb._tcp.cluster0.mzkazhr.mongodb.net
+Thu Jun 15 2023 19:51:28 [PH] error: Failed to connect database  querySrv ETIMEOUT _mongodb._tcp.cluster0.mzkazhr.mongodb.net

@@ -8,8 +8,8 @@ export const userSchema = new Schema<IUser>(
     role: { type: String, required: true },
     password: { type: String, required: true },
     student: { type: Schema.Types.ObjectId, ref: 'Student' },
-    // faculty: { type: Schema.Types.ObjectId, ref: 'Faculty' },
-    // admin: { type: Schema.Types.ObjectId, ref: 'Admin' },
+    faculty: { type: Schema.Types.ObjectId, ref: 'Faculty' },
+    admin: { type: Schema.Types.ObjectId, ref: 'Admin' },
   },
   {
     timestamps: true, // It will add createdAt & updatedAt fields
