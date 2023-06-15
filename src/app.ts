@@ -11,6 +11,10 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Root route
+app.use('/', (req, res) => {
+  res.send('🔥 Application is successfully running 🔥');
+});
 // Application Routes
 app.use('/api/v1/', routes);
 
