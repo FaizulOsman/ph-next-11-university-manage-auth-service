@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-expressions */
-import { ErrorRequestHandler, Request, Response } from 'express';
+import { ErrorRequestHandler, NextFunction, Request, Response } from 'express';
 import { IGenericErrorMessage } from '../../interfaces/error';
 import handleValidationError from '../../errors/handleValidationError';
 import config from '../../config';
@@ -14,7 +15,8 @@ import handleCastError from '../../errors/handleCastError';
 const globalErrorHandler: ErrorRequestHandler = (
   error, // Error object representing a validation error
   req: Request, // Express request object
-  res: Response // Express response object
+  res: Response, // Express response object
+  next: NextFunction // Express next (Don't remove)
 ) => {
   // Log errors in production environment otherwise log in console
   config.env === 'development'
