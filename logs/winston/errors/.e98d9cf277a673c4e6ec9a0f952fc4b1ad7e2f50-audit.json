@@ -1,15 +1,15 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 14
-    },
-    "auditLog": "W:\\PH-NextLevel\\11-university-manage-auth-service\\logs\\winston\\errors\\.e98d9cf277a673c4e6ec9a0f952fc4b1ad7e2f50-audit.json",
-    "files": [
-        {
-            "date": 1687144587873,
-            "name": "W:\\PH-NextLevel\\11-university-manage-auth-service\\logs\\winston\\errors\\phu-2023-19-06-09-error.log",
-            "hash": "31bcd349b8686bcd9642ef741eaa5ccad135f20608411544addd43ebb0a70e3d"
-        }
-    ],
-    "hashType": "sha256"
+  "keep": {
+    "days": true,
+    "amount": 14
+  },
+  "auditLog": "W:\\PH-NextLevel\\11-university-manage-auth-service\\logs\\winston\\errors\\.e98d9cf277a673c4e6ec9a0f952fc4b1ad7e2f50-audit.json",
+  "files": [
+    {
+      "date": 1687144587873,
+      "name": "W:\\PH-NextLevel\\11-university-manage-auth-service\\logs\\winston\\errors\\phu-2023-19-06-09-error.log",
+      "hash": "31bcd349b8686bcd9642ef741eaa5ccad135f20608411544addd43ebb0a70e3d"
+    }
+  ],
+  "hashType": "sha256"
 }
