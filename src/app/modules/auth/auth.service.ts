@@ -51,6 +51,7 @@ const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
     needsPasswordChange,
   };
 };
+
 const refreshToken = async (token: string): Promise<IRefreshTokenResponse> => {
   // verify token
   // invalid token - synchronous

@@ -4,11 +4,11 @@ import { IUser, UserModel } from './user.interface';
 import bcrypt from 'bcrypt';
 
 // User Schema
-export const userSchema = new Schema<IUser, UserModel>(
+export const UserSchema = new Schema<IUser, UserModel>(
   {
     id: { type: String, required: true, unique: true },
     role: { type: String, required: true },
-    password: { type: String, required: true },
+    password: { type: String, required: true, select: 0 },
     needsPasswordChange: { type: Boolean, default: true },
     student: { type: Schema.Types.ObjectId, ref: 'Student' },
     faculty: { type: Schema.Types.ObjectId, ref: 'Faculty' },
@@ -23,7 +23,7 @@ export const userSchema = new Schema<IUser, UserModel>(
   }
 );
 
-userSchema.statics.isUserExist = async function (
+UserSchema.statics.isUserExist = async function (
   id: string
 ): Promise<Pick<
   IUser,
@@ -35,22 +35,39 @@ userSchema.statics.isUserExist = async function (
   );
 };
 
-userSchema.statics.isPasswordMatched = async function (
+UserSchema.statics.isPasswordMatched = async function (
   givenPassword: string,
   savedPassword: string
 ): Promise<boolean> {
   return await bcrypt.compare(givenPassword, savedPassword);
 };
 
-userSchema.pre('save', async function (next) {
-  // Hash Password
+// User.create() / user.save()
+UserSchema.pre('save', async function (next) {
+  // Hashing Password
   const user = this;
   user.password = await bcrypt.hash(
-    this.password,
+    user.password,
     Number(process.env.bcrypt_salt_rounds)
   );
 
   next();
 });
 
-export const User = model<IUser, UserModel>('User', userSchema);
+export const User = model<IUser, UserModel>('User', UserSchema);
+
+// UserSchema.methods.isUserExist = async function (
+//   id: string
+// ): Promise<Partial<IUser> | null> {
+//   return await User.findOne(
+//     { id },
+//     { id: 1, password: 1, needsPasswordChange: 1 }
+//   );
+// };
+
+// UserSchema.methods.isPasswordMatched = async function (
+//   givenPassword: string,
+//   savedPassword: string
+// ): Promise<boolean> {
+//   return await bcrypt.compare(givenPassword, savedPassword);
+// };
