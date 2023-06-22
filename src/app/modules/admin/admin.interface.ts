@@ -2,7 +2,7 @@ import { Types } from 'mongoose';
 import { Model } from 'mongoose';
 import { IManagementDepartment } from '../managementDepartment/managementDepartment.interface';
 
-type name = {
+type Name = {
   firstName: string;
   middleName: string;
   lastName: string;
@@ -10,15 +10,15 @@ type name = {
 
 export type IAdmin = {
   id: string;
-  name: name;
+  name: Name;
   dateOfBirth: string;
-  gender: 'male' | 'female';
+  gender?: 'male' | 'female';
   bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
   email: string;
   contactNo: string;
   emergencyContactNo: string;
-  presentAddress: string;
-  permanentAddress: string;
+  presentAddress?: string;
+  permanentAddress?: string;
   managementDepartment: Types.ObjectId | IManagementDepartment;
   designation: string;
   profileImage?: string;
@@ -29,9 +29,11 @@ export type AdminModel = Model<IAdmin, Record<string, unknown>>;
 export type IAdminFilter = {
   searchTerm?: string;
   id?: string;
-  bloodGroup?: string;
+  bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
   email?: string;
   contactNo?: string;
+  gender?: 'male' | 'female';
   emergencyContactNo?: string;
   managementDepartment?: string;
+  designation?: string;
 };

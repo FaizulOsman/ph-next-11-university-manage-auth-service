@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 import { bloodGroup, gender } from '../student/student.constant';
 import { AdminModel, IAdmin } from './admin.interface';
 
-export const adminSchema = new Schema<IAdmin, AdminModel>(
+export const AdminSchema = new Schema<IAdmin, AdminModel>(
   {
     id: {
       type: String,
@@ -17,6 +17,7 @@ export const adminSchema = new Schema<IAdmin, AdminModel>(
         },
         lastName: {
           type: String,
+          required: true,
         },
         middleName: {
           type: String,
@@ -79,4 +80,4 @@ export const adminSchema = new Schema<IAdmin, AdminModel>(
   }
 );
 
-export const Admin = model<IAdmin, AdminModel>('Admin', adminSchema);
+export const Admin = model<IAdmin, AdminModel>('Admin', AdminSchema);

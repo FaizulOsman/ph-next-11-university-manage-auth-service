@@ -4,17 +4,20 @@ export const adminSearchableFields = [
   'id',
   'email',
   'contactNo',
-  'name.firstname',
-  'name.middlename',
-  'name.lastname',
+  'emergencyContactNo',
+  'name.firstName',
+  'name.lastName',
+  'name.middleName',
 ];
 
 export const adminFilterableFields = [
   'searchTerm',
   'id',
+  'gender',
   'bloodGroup',
   'email',
   'contactNo',
   'emergencyContactNo',
   'managementDepartment',
+  'designation',
 ];
