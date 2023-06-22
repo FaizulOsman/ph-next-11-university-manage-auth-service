@@ -1,0 +1,2 @@
+Thu Jun 22 2023 9:9:7 [PH] error: Attempted illegal state transition from [TRANSACTION_ABORTED] to [TRANSACTION_COMMITTED]
+Thu Jun 22 2023 9:10:23 [PH] error: Attempted illegal state transition from [TRANSACTION_COMMITTED] to [TRANSACTION_ABORTED]

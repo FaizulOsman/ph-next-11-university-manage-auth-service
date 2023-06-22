@@ -8,6 +8,7 @@ import { IUser } from './user.interface';
 // Create Student
 const createStudent: RequestHandler = catchAsync(
   async (req: Request, res: Response) => {
+    console.log('cookie is', req.cookies);
     const { student, ...userData } = req.body;
     const result = await UserService.createStudent(student, userData);
 
