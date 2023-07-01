@@ -34,4 +34,10 @@ router.get(
   FacultyController.getAllFaculties
 );
 
+router.delete(
+  '/:id',
+  auth(ENUM_USER_ROLE.SUPER_ADMIN),
+  FacultyController.deleteFaculty
+);
+
 export const FacultyRoutes = router;
