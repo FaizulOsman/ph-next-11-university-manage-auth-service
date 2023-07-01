@@ -52,6 +52,10 @@ UserSchema.pre('save', async function (next) {
     Number(process.env.bcrypt_salt_rounds)
   );
 
+  if (!user.needsPasswordChange) {
+    user.passwordChangedAt = new Date();
+  }
+
   next();
 });
 

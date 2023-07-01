@@ -10,7 +10,7 @@ import {
   ILoginUserResponse,
   IRefreshTokenResponse,
 } from './auth.interface';
-import bcrypt from 'bcrypt';
+// import bcrypt from 'bcrypt';
 
 const loginUser = async (payload: ILoginUser): Promise<ILoginUserResponse> => {
   const { id, password } = payload;
@@ -98,9 +98,15 @@ const changePassword = async (
   payload: IChangePassword
 ): Promise<void> => {
   const { oldPassword, newPassword } = payload;
-  console.log(user);
+
   // Checking is user exist
-  const isUserExist = await User.isUserExist(user?.userId);
+  // const isUserExist = await User.isUserExist(user?.userId);
+
+  // ===== Alternative way =====
+  const isUserExist = await User.findOne({ id: user?.userId }).select(
+    '+password'
+  );
+
   if (!isUserExist) {
     throw new ApiError(httpStatus.NOT_FOUND, 'User does not exist');
   }
@@ -114,19 +120,24 @@ const changePassword = async (
   }
 
   // Hash password
-  const newHashPassword = await bcrypt.hash(
-    newPassword,
-    Number(config.bcrypt_salt_rounds as string)
-  );
+  // const newHashPassword = await bcrypt.hash(
+  //   newPassword,
+  //   Number(config.bcrypt_salt_rounds as string)
+  // );
 
-  // Update password
-  const updatedData = {
-    password: newHashPassword,
-    needsPasswordChange: false,
-    passwordChangedAt: new Date(),
-  };
+  // // Update password
+  // const updatedData = {
+  //   password: newHashPassword,
+  //   needsPasswordChange: false,
+  //   passwordChangedAt: new Date(),
+  // };
 
-  await User.findOneAndUpdate({ id: user?.userId }, updatedData);
+  // await User.findOneAndUpdate({ id: user?.userId }, updatedData);
+
+  // ===== Alternative way =====
+  isUserExist.password = newPassword;
+  isUserExist.needsPasswordChange = false;
+  isUserExist.save();
 };
 
 export const AuthService = {
